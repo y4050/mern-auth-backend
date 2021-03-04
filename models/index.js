@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const connectionString = process.env.MONGO_URI || "mongodb://localhost:27017/mernAuth";
+const { MONGO_URL } = process.env;
 const configOptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -9,7 +9,7 @@ const configOptions = {
     useFindAndModify: false,
 };
 
-mongoose.connect(connectionString, configOptions)
+mongoose.connect(MONGO_URL, configOptions)
     .then(() => console.log('MongoDB successfully connected...'))
     .catch(err => console.log('MongoDB connection error:', err));
 
