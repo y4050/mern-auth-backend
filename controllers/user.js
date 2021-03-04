@@ -62,7 +62,7 @@ const login = async (req, res) => {
 
     if (foundUser) {
         // user is in the DB
-        let isMatch = await bcrypt.compare(password, foundUser.password);
+        let isMatch = await bcrypt.compare(req.body.password, foundUser.password);
         console.log(isMatch);
         if (isMatch) {
             // if user matched, then send a JSON Web Token
