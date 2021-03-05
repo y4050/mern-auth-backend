@@ -91,10 +91,21 @@ const login = async (req, res) => {
         return res.status(400).json({ message: "User not found ⚠️"})
     }
 }
+    
+// profile
+const profile = (req, res) => {
+    console.log(">>>>> inside /profile");
+    console.log(req.body);
+    console.log(">>>>> user");
+    console.log(req.user);
+    const { id, name, email } = req;
+    res.json({ id:id, name, email });
+}
 
 // Exports
 module.exports = {
     test,
     register,
     login,
+    profile,
 }
